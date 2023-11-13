@@ -1,10 +1,12 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
+
 import { useNavigate } from 'react-router-dom';
 import "./modal.css";
+
 
 const style = {
 	position: 'absolute',
@@ -15,9 +17,12 @@ const style = {
 	bgcolor: '#3F416D',
 	border: '2px solid #000',
 	boxShadow: 24,
-	p: 4,
+	p: 2,
 	borderRadius: 2,
+	display:'flex',
+	flexDirection: 'column'
 };
+
 
 export default function BasicModal() {
 	const navigate = useNavigate();
@@ -28,17 +33,21 @@ export default function BasicModal() {
 		navigate("/home");
 		handleClose();
 	}
+
+
 	const questionCount = [10, 20, 30, 40, 50];
 
 	return (
 		<div>
 			<Modal
-				open={open}
+				open={open2}
 				onClose={handleClose}
 				aria-labelledby="modal-modal-title"
 				aria-describedby="modal-modal-description"
+				disableBackdropClick
 			>
 				<Box sx={style}>
+
 					<div className='ModalBox'>
 						{questionCount.map((val, index) => (
 							<div key={index} className='QuestionNButton'>
@@ -48,6 +57,7 @@ export default function BasicModal() {
 						<div style={{display:'flex',justifyContent:'center',alignItems:'center', marginTop:'20px'}}>
                             <button onClick={handleCloseButton} className='CloseButton'>Close</button>
                         </div>
+
 					</div>
 				</Box>
 			</Modal>
