@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { useNavigate } from 'react-router-dom';
+import "./modal.css";
 
 const style = {
 	position: 'absolute',
@@ -18,10 +20,14 @@ const style = {
 };
 
 export default function BasicModal() {
+	const navigate = useNavigate();
 	const [open, setOpen] = React.useState(true);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
-
+	const handleCloseButton = () => {
+		navigate("/home");
+		handleClose();
+	}
 	const questionCount = [10, 20, 30, 40, 50];
 
 	return (
@@ -33,34 +39,14 @@ export default function BasicModal() {
 				aria-describedby="modal-modal-description"
 			>
 				<Box sx={style}>
-					<div
-						style={{
-							width: '100%',
-							margin: '10px',
-							maxHeight: '500px',
-							overflow: 'auto',
-						}}
-					>
+					<div className='ModalBox'>
 						{questionCount.map((val, index) => (
-							<div
-								key={index}
-								style={{
-									backgroundColor: '#575D7B',
-									padding: 0,
-									display: 'flex',
-									justifyContent: 'center',
-									alignItems: 'center',
-									borderRadius: '5px',
-									color: '#FDF9F9',
-									height: '40px',
-									marginTop: '10px',
-								}}
-							>
+							<div key={index} className='QuestionNButton'>
 								<p>{val} Questions</p>
 							</div>
 						))}
 						<div style={{display:'flex',justifyContent:'center',alignItems:'center', marginTop:'20px'}}>
-                            <button style={{backgroundColor:'#241B3E', border:'none' ,outline:'none' ,padding:'10px 50px', borderRadius:'5px', color:'#ffff' }}>Close</button>
+                            <button onClick={handleCloseButton} className='CloseButton'>Close</button>
                         </div>
 					</div>
 				</Box>
