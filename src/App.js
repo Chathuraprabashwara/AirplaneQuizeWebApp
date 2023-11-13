@@ -13,7 +13,7 @@ function App() {
 			/>
 			<Route
 				path="/home"
-				element={<Home />}
+				element={<Home data="test"/>}
 			/>
       	<Route
 				path="/module/:moduleName"

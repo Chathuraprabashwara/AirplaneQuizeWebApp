@@ -4,9 +4,9 @@ import Grid from '@mui/material/Grid';
 
 const ModulesData = ["Flight Planing and Monitoring","Module2","Module3","Module4"]
  
-function Home() {
-  return (<>
-    <div style={{display:'flex', justifyContent:'center',alignItems:'center', height:'25vh', color:"#BBE1FA", fontSize:'40px'}}>ATPL Examination System</div>
+function Home({data}) {
+  return (<div>
+    <div style={{display:'flex', justifyContent:'center',alignItems:'center', height:'25vh', color:"#BBE1FA", fontSize:'40px'}}>ATPL Examination System {data}</div>
     <div style={{height:'75vh', margin:'0 100px'}}>
         <Grid container style={{ justifyContent:'center'}} rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {
@@ -18,7 +18,7 @@ function Home() {
         }
        </Grid>
     </div>
-    </>
+    </div>
   )
 }
 
