@@ -17,6 +17,7 @@ function ModulePage() {
     answers:["answer1","answer2","answer3" ,"answer4"]
   }
 ]
+// [12,24,]
 
 	return (
 		<>

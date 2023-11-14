@@ -1,31 +1,49 @@
-.ModalBox{
+.container {
     width: 100%;
-    margin: 10px;
     max-height: 500px;
     overflow: auto;
-}
-.QuestionNButton{
-    background-color: #575D7B;
+
+  }
+  h4{
+    text-align: center;
+    color:#BBE1FA;
+  }
+  .questionContainer {
+    background-color: #575d7b;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    color: #FDF9F9;
+    color: #fdf9f9;
     height: 40px;
     margin-top: 10px;
-}
-.QuestionNButton:hover{
-    background-color: #3d4157;
-}
-.CloseButton{
-    background-color:#241B3E; 
-    border:none;
-    outline:none; 
-    padding:10px 50px;
-    border-radius:5px;
-    color:#ffff;
-}
-.CloseButton.CloseButton:hover{
-    background-color: #3f306d;
-}
+    cursor: pointer;
+  }
+
+  .questionContainer:hover{
+    background-color: #323646;
+
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .closeButton {
+    background-color: #241b3e;
+    border: none;
+    outline: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    color: #ffff;
+    cursor: pointer;
+  }
+  
+  .closeButton:hover {
+    background-color: #ed0d45;
+
+  }

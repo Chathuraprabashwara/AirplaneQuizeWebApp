@@ -3,10 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
-
-import { useNavigate } from 'react-router-dom';
-import "./modal.css";
-
+import './Modal.css';
 
 const style = {
 	position: 'absolute',
@@ -23,18 +20,10 @@ const style = {
 	flexDirection: 'column'
 };
 
-
-export default function BasicModal() {
-	const navigate = useNavigate();
-	const [open, setOpen] = React.useState(true);
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
-	const handleCloseButton = () => {
-		navigate("/home");
-		handleClose();
-	}
-
-
+export default function BasicModal({setOpen2,open2}) {
+	// const handleOpen = () => {setOpen2(true)};
+	const handleClose = () => setOpen2(false);
+console.log(open2)
 	const questionCount = [10, 20, 30, 40, 50];
 
 	return (
@@ -47,17 +36,20 @@ export default function BasicModal() {
 				disableBackdropClick
 			>
 				<Box sx={style}>
+				<h4>Flight Planing and Monitoring</h4>
 
-					<div className='ModalBox'>
+					<div className="container">
 						{questionCount.map((val, index) => (
-							<div key={index} className='QuestionNButton'>
+							<div
+								key={index}
+								className="questionContainer"
+							>
 								<p>{val} Questions</p>
 							</div>
 						))}
-						<div style={{display:'flex',justifyContent:'center',alignItems:'center', marginTop:'20px'}}>
-                            <button onClick={handleCloseButton} className='CloseButton'>Close</button>
-                        </div>
-
+						<div className="buttonContainer">
+							<button onClick={()=>{handleClose()}} className="closeButton">Close</button>
+						</div>
 					</div>
 				</Box>
 			</Modal>
