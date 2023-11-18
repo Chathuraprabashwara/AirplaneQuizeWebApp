@@ -11,7 +11,6 @@ function Home({data}) {
     .then(res=> setmoduleList(res))
     .catch(err => console.log(err));
   },[]);
-  console.log(moduleList);
   return (<div>
     <div style={{display:'flex', justifyContent:'center',alignItems:'center', height:'25vh', color:"#BBE1FA", fontSize:'40px'}}>ATPL Examination System {data}</div>
     <div style={{height:'75vh', margin:'0 100px'}}>
