@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { useNavigate } from "react-router-dom";
 
-import './Modal.css';
+import '../Css/Modal.css';
 
 const style = {
 	position: 'absolute',

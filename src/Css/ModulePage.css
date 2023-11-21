@@ -1,0 +1,73 @@
+/* ModulePage.css */
+
+.header-container {
+	display: flex;
+	justify-content: space-between;
+	margin-right: 30px;
+	margin-left: 30px;
+	background-color: #0a0b1e;
+	margin-top: 10px;
+	padding: 0 10px;
+	border-radius: 10px;
+}
+
+.header-text {
+	color: #bbe1fa;
+}
+
+.header-info {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.info-text {
+	color: #bbe1fa;
+}
+
+.info-icon {
+	margin-left: 10px;
+	width: 45px;
+	height: 45px;
+}
+
+.icon {
+	width: 30px;
+	height: 30px;
+	color: #bbe1fa;
+}
+
+.button-container {
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 30px;
+	margin-top: 10px;
+}
+
+.nextBtn {
+    background-color: #0b5f74;
+    border: none;
+    outline: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    color: #ffff;
+    cursor: pointer;
+  }
+  
+  .nextBtn:hover {
+    background-color: #1ebde4;
+  }
+.BackBtn{
+    background-color: #410b74;
+    border: none;
+    outline: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    color: #ffff;
+    cursor: pointer;
+}
+
+.BackBtn:hover{
+    background-color: #1ebde4;
+
+}

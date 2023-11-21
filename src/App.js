@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import LoadingScreen from './pages/LoadingScreen';
 import ModulePage from './pages/ModulePage';
+import SubCategory from './pages/SubCategory';
 
 function App() {
 	return (
@@ -18,6 +19,10 @@ function App() {
       	<Route
 				path="/module/:moduleName"
 				element={<ModulePage />}
+			/>
+			<Route
+				path="/subcategory/:id"
+				element={<SubCategory />}
 			/>
       </Routes>
 		</div>

@@ -1,7 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import './module.css';
+import '../Css/module.css';
+
+const subCategory = [
+	{
+		id: 1,
+		name: 'module name 1',
+	},
+  {
+		id: 2,
+		name: 'module name 2',
+	},
+  {
+		id: 3,
+		name: 'module name 4',
+	}
+];
 
 function Module({ name }) {
 	const navigate = useNavigate();
@@ -9,7 +24,7 @@ function Module({ name }) {
 		<div
 			className="ModuleCard"
 			onClick={() => {
-				navigate(`/module/${name.replace(/\s/g, '')}`);
+				navigate(`/subCategory/3`, { state: { subCategory: subCategory, prop2: 'value2' } });
 			}}
 		>
 			{name}
