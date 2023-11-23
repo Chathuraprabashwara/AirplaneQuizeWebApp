@@ -23,7 +23,7 @@
 	border-radius: 10px;
 	max-height: 600px;
 	width: 80%;
-	overflow: scroll;
+	overflow-y: scroll;
 	box-shadow: rgba(179, 187, 193, 0.3) 0px 1px 2px 0px,
 		rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
