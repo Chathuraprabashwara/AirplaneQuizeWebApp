@@ -2,26 +2,14 @@ import React, { useState } from 'react';
 import '../Css/Questions.css'; // Import the CSS file
 import Grid from '@mui/material/Grid';
 
-function Questions({ data, answers, setAnswer ,isCorrect,setIsCorrect }) {
-	const [color, setColor] = useState('#DA0E3F');
-		console.log(answers)
-	const handleAnswer = (item, id) => {
-		setColor('#DA0E3F');
-
-		if (answers.length > 0) {
-			const checkAvailability = answers.filter(
-				(val) => +val.slice(0, -1) !== item
-			);
-			setAnswer([...checkAvailability, `${item}${id}`]);
-		} else {
-			setAnswer((prev) => [...prev, `${item}${id}`]);
-		}
-
-		setIsCorrect(data.correctAnswers - 1);
-		if (data.correctAnswers == id + 1) {
-			setColor('green');
-		}
+function Questions({ data, answers, setAnswer ,isCorrect,setIsCorrect, setColor,color}) {
+		console.log(data)
+	const handleAnswer = (id,val) => {
+		setColor(id)
+		// setIsCorrect(val)
 	};
+	console.log(color)
+	console.log(isCorrect)
 	return (
 		<>
 			<div
@@ -34,7 +22,7 @@ function Questions({ data, answers, setAnswer ,isCorrect,setIsCorrect }) {
 				>
 					<Grid xs="10">
 						<p className="questionText">
-							{1 + 1}) {data.question}
+							{data.id}) {data.question}
 						</p>
 						<div className="answerContainer">
 							{data.answers.map((val, idx) => (
@@ -42,13 +30,11 @@ function Questions({ data, answers, setAnswer ,isCorrect,setIsCorrect }) {
 									key={idx}
 									className="answerText"
 									style={{
-										backgroundColor:
-											(answers.includes(`${data.id}${idx}`) && color) ||
-											(idx === isCorrect && 'blue'),
+									backgroundColor:answers ===val.id && 'red' || color ===val.id  && 'blue' 
 									}}
-									onClick={() => handleAnswer(data.id, idx)}
+									onClick={() => handleAnswer(val.id,val)}
 								>
-									{idx + 1}) {val}
+									{val.id}) {val.answer}
 								</div>
 							))}
 						</div>

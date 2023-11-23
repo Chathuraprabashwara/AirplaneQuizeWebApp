@@ -1,112 +1,157 @@
 import React, { useState } from 'react';
 import '../Css/subCategory.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-
-const data=[{
-  id:1,
-  question:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  image:true,
-  correctAnswers:1,
-  url:'https://flyingmag.sfo3.digitaloceanspaces.com/flyingma/wp-content/uploads/2022/06/23090933/AdobeStock_249454423-scaled.jpeg'
-},
-{
-  id:2,
-  question:"what is the name of ...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  correctAnswers:3,
-
-},
-{
-  id:3,
-  question:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  image:true,
-  correctAnswers:1,
-  url:'https://flyingmag.sfo3.digitaloceanspaces.com/flyingma/wp-content/uploads/2022/06/23090933/AdobeStock_249454423-scaled.jpeg'
-},
-{
-  id:4,
-  question:"what is the name of ...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  correctAnswers:3,
-
-},
-{
-  id:5,
-  question:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  image:true,
-  correctAnswers:1,
-  url:'https://flyingmag.sfo3.digitaloceanspaces.com/flyingma/wp-content/uploads/2022/06/23090933/AdobeStock_249454423-scaled.jpeg'
-},
-{
-  id:6,
-  question:"what is the name of ...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  correctAnswers:3,
-
-},
-{
-  id:7,
-  question:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  image:true,
-  correctAnswers:1,
-  url:'https://flyingmag.sfo3.digitaloceanspaces.com/flyingma/wp-content/uploads/2022/06/23090933/AdobeStock_249454423-scaled.jpeg'
-},
-{
-  id:8,
-  question:"what is the name of ...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  correctAnswers:3,
-
-},
-{
-  id:9,
-  question:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  image:true,
-  correctAnswers:1,
-  url:'https://flyingmag.sfo3.digitaloceanspaces.com/flyingma/wp-content/uploads/2022/06/23090933/AdobeStock_249454423-scaled.jpeg'
-},
-{
-  id:10,
-  question:"what is the name of ...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  correctAnswers:3,
-
-},
-{
-  id:11,
-  question:"what is the name of ...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  correctAnswers:3,
-
-},
-{
-  id:12,
-  question:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  image:true,
-  correctAnswers:1,
-  url:'https://flyingmag.sfo3.digitaloceanspaces.com/flyingma/wp-content/uploads/2022/06/23090933/AdobeStock_249454423-scaled.jpeg'
-},
-{
-  id:13,
-  question:"what is the name of ...",
-  answers:["answer1","answer2","answer3" ,"answer4"],
-  correctAnswers:3,
-
-},
-]
+const data2 = [
+	{
+		id: 1,
+		question: 'This Question 1',
+		sub_module_id: 1,
+		answers: [
+			{
+				id: 1,
+				answer: 'anwer 1',
+				question_id: 1,
+				is_image: true,
+				is_correct_answer: false,
+			},
+			{
+				id: 2,
+				answer: 'anwer 2',
+				question_id: 1,
+				is_image: true,
+				is_correct_answer: false,
+			},
+			{
+				id: 3,
+				answer: 'anwer 3',
+				question_id: 1,
+				is_image: true,
+				is_correct_answer: true,
+			},
+			{
+				id: 4,
+				answer: 'anwer 4',
+				question_id: 1,
+				is_image: true,
+				is_correct_answer: false,
+			},
+		],
+	},
+	{
+		id: 2,
+		question: 'This Question 2',
+		sub_module_id: 1,
+		answers: [
+			{
+				id: 1,
+				answer: 'anwer 1',
+				question_id: 2,
+				is_image: true,
+				is_correct_answer: false,
+			},
+			{
+				id: 2,
+				answer: 'anwer 2',
+				question_id: 2,
+				is_image: true,
+				is_correct_answer: false,
+			},
+			{
+				id: 3,
+				answer: 'anwer 3',
+				question_id: 2,
+				is_image: true,
+				is_correct_answer: true,
+			},
+			{
+				id: 4,
+				answer: 'anwer 4',
+				question_id: 2,
+				is_image: true,
+				is_correct_answer: false,
+			},
+		],
+	},
+	{
+		id: 3,
+		question: 'This Question 3',
+		sub_module_id: 1,
+		answers: [
+			{
+				id: 1,
+				answer: 'anwer 1',
+				question_id: 3,
+				is_image: true,
+				is_correct_answer: false,
+			},
+			{
+				id: 2,
+				answer: 'anwer 2',
+				question_id: 3,
+				is_image: true,
+				is_correct_answer: false,
+			},
+			{
+				id: 3,
+				answer: 'anwer 3',
+				question_id: 3,
+				is_image: true,
+				is_correct_answer: false,
+			},
+			{
+				id: 4,
+				answer: 'anwer 4',
+				question_id: 3,
+				is_image: true,
+				is_correct_answer: true,
+			},
+		],
+	},
+	{
+		id: 4,
+		question: 'This Question 4',
+		sub_module_id: 1,
+		answers: [
+			{
+				id: 1,
+				answer: 'anwer 1',
+				question_id: 4,
+				is_image: true,
+				is_correct_answer: true,
+			},
+			{
+				id: 2,
+				answer: 'anwer 2',
+				question_id: 4,
+				is_image: true,
+				is_correct_answer: false,
+			},
+			{
+				id: 3,
+				answer: 'anwer 3',
+				question_id: 4,
+				is_image: true,
+				is_correct_answer: false,
+			},
+			{
+				id: 4,
+				answer: 'anwer 4',
+				question_id: 4,
+				is_image: true,
+				is_correct_answer: false,
+			},
+		],
+	},
+];
 
 export default function SubCategory() {
 	// Access props passed from the previous page
 	const [selectedCategory, setSelectedCategory] = useState([]);
 	const [qNumber, setQNumber] = useState('');
 	const { state } = useLocation();
+	const navigate = useNavigate();
+
 	const { subCategory } = state;
 
 	const handleSelectCategory = (id) => {
@@ -124,19 +169,19 @@ export default function SubCategory() {
 		console.log(IdList);
 	};
 
- const handleStart = () => {
-  const data = {
-    SubCategory:selectedCategory,
-    questions:qNumber
-  }
-    if(selectedCategory.length >0) {
+	const handleStart = () => {
+		const data = {
+			SubCategory: selectedCategory,
+			questions: qNumber,
+		};
+		if (selectedCategory.length > 0) {
+			navigate(`/module/2`, { state: { data: data2 } });
+		} else {
+			alert('please Select atleast one sub Category');
+		}
 
-    }else{
-      alert('please Select atleast one sub Category')
-    }
-
-  console.log(data)
- }
+		console.log(data);
+	};
 
 	console.log(subCategory);
 	return (
@@ -188,7 +233,12 @@ export default function SubCategory() {
 					>
 						Clear
 					</button>
-					<button className="button" onClick={handleStart}>Start</button>
+					<button
+						className="button"
+						onClick={handleStart}
+					>
+						Start
+					</button>
 				</div>
 			</div>
 		</div>

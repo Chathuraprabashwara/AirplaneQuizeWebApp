@@ -42,6 +42,7 @@
 	justify-content: flex-end;
 	margin-right: 30px;
 	margin-top: 10px;
+	gap: 20px;
 }
 
 .nextBtn {
@@ -69,5 +70,20 @@
 
 .BackBtn:hover{
     background-color: #1ebde4;
+
+}
+
+.showAnswer{
+	background-color: #265b69;
+    border: none;
+    outline: none;
+    padding: 10px 50px;
+    border-radius: 5px;
+    color: #ffff;
+    cursor: pointer;
+}
+
+.showAnswer:hover{
+	background-color: #1ebde4;
 
 }
