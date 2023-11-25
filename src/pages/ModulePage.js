@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Modal from '../Components/Modal';
 import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
+import HomeIcon from '@mui/icons-material/Home';
 import Questions from '../Components/Questions';
 import { IconButton } from '@mui/material';
-import { useLocation } from 'react-router-dom';
+import { useLocation ,useNavigate } from 'react-router-dom';
 import '../Css/ModulePage.css'; // Add your external CSS file
 import ResultsSheet from '../Components/ResultsSheet';
 
@@ -11,14 +11,14 @@ function ModulePage() {
 	const { state } = useLocation();
 	const { data } = state;
 	const [showResult, setShowResult] = useState(false);
-	const [qCount, setQCount] = useState(0);
+	const [select, setSelect] = useState([]);
 	const [answers, setAnswer] = useState('');
 	const [question, setQuestion] = useState(0);
 	const [isCorrect, setIsCorrect] = useState([]);
 	const [color, setColor] = useState('');
 	const [questionSet, setQuestionSet] = useState(data);
 
-	console.log(data);
+	const navigate = useNavigate()
 
 	const handleBack = () => {
 		setAnswer(null);
@@ -34,22 +34,32 @@ function ModulePage() {
 		questionSet[question].answers.map((val) => {
 			if (val.is_correct_answer) {
 				setAnswer(val.id);
-				if (val.id === color) {
-					console.log(color);
-					console.log(val.id);
-					setIsCorrect((prev) => [...prev, questionSet[question].id]);
-				}
 			}
 		});
 	};
 
-	console.log(isCorrect);
 	const handleShowResultSheet = () => {
-		setShowResult(true);
+		questionSet.map((val) => {
+			select.map((val2) => {
+				if (val.id === val2.questionId) {
+					val.answers.map((ans) => {
+						if (ans.is_correct_answer) {
+							if (ans.id === val2.answer) {
+								setIsCorrect((prev) => [...prev, val.id]);
+							}
+						}
+					});
+				}
+			});
+		});
+		if (select.length > 0) {
+			setShowResult(true);
+		} else {
+			alert('please select ansewers before check results');
+		}
 		setAnswer(null);
 		setColor(null);
 	};
-	console.log(questionSet);
 
 	return (
 		<>
@@ -57,9 +67,8 @@ function ModulePage() {
 				<p className="header-text">Flight Planning and Monitoring</p>
 				<div className="header-info">
 					<p className="info-text">Total Questions - {data.length}</p>
-					<IconButton className="info-icon">
-						<ChangeCircleOutlinedIcon className="icon" />
-					</IconButton>
+						<ChangeCircleOutlinedIcon className="icon" onClick={() => { navigate('/subCategory/3',data)}} />
+						<HomeIcon className="icon" onClick={() => { navigate('/home')}} />
 				</div>
 			</div>
 			<div>
@@ -70,6 +79,7 @@ function ModulePage() {
 						setQuestionSet={setQuestionSet}
 						setShowResult={setShowResult}
 						setQuestion={setQuestion}
+						setSelect={setSelect}
 					/>
 				) : (
 					<Questions
@@ -80,6 +90,8 @@ function ModulePage() {
 						setIsCorrect={setIsCorrect}
 						setColor={setColor}
 						color={color}
+						setSelect={setSelect}
+						select={select}
 					/>
 				)}
 			</div>

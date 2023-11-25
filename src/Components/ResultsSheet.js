@@ -6,18 +6,16 @@ function ResultsSheet({
 	setQuestionSet,
 	setShowResult,
 	setQuestion,
+	setSelect,
 }) {
 	const percentage = (isCorrect.length / data.length) * 100;
-	console.log(data);
+
 	const handleRetry = () => {
-		console.log(isCorrect);
-		console.log(data.filter((val) => !isCorrect.includes(val.id)));
 		const incorrectAnswers = data.filter((val) => !isCorrect.includes(val.id));
-		// console.log(incorrectAnswers)
 		setQuestionSet(incorrectAnswers);
 		setQuestion(0);
 		setShowResult(false);
-		console.log(incorrectAnswers);
+		setSelect([]);
 	};
 	return (
 		<div className="ResultSheetContainer">

@@ -2,14 +2,40 @@ import React, { useState } from 'react';
 import '../Css/Questions.css'; // Import the CSS file
 import Grid from '@mui/material/Grid';
 
-function Questions({ data, answers, setAnswer ,isCorrect,setIsCorrect, setColor,color}) {
-		console.log(data)
-	const handleAnswer = (id,val) => {
-		setColor(id)
-		// setIsCorrect(val)
+function Questions({
+	data,
+	answers,
+	setColor,
+	setSelect,
+	select,
+}) {
+	console.log(data);
+	const handleAnswer = (id, qid) => {
+		setColor(id);
+		console.log(qid);
+		const selectVal = {
+			questionId: qid,
+			answer: id,
+		};
+
+		const filterSelect = select.filter((val) => val.questionId !== qid);
+		setSelect([...filterSelect, selectVal]);
 	};
-	console.log(color)
-	console.log(isCorrect)
+
+	const handleColor = (id, qId) => {
+		const checkObject = { questionId: qId, answer: id };
+		const found = select.some(
+			(item) =>
+				item.questionId === checkObject.questionId &&
+				item.answer === checkObject.answer
+		);
+		if (found) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
 	return (
 		<>
 			<div
@@ -30,9 +56,11 @@ function Questions({ data, answers, setAnswer ,isCorrect,setIsCorrect, setColor,
 									key={idx}
 									className="answerText"
 									style={{
-									backgroundColor:answers ===val.id && 'red' || color ===val.id  && 'blue' 
+										backgroundColor:
+											(answers === val.id && 'red') ||
+											(handleColor(val.id, data.id) && 'blue'),
 									}}
-									onClick={() => handleAnswer(val.id,val)}
+									onClick={() => handleAnswer(val.id, data.id)}
 								>
 									{val.id}) {val.answer}
 								</div>
