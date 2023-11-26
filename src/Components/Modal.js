@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
-import './modal.css';
+import { useNavigate } from "react-router-dom";
+
+import '../Css/Modal.css';
 
 const style = {
 	position: 'absolute',
@@ -20,10 +20,21 @@ const style = {
 	flexDirection: 'column'
 };
 
-export default function BasicModal({setOpen2,open2}) {
+export default function BasicModal({setOpen2,open2,setQCount}) {
+	const navigate = useNavigate();
+
+
 	// const handleOpen = () => {setOpen2(true)};
-	const handleClose = () => setOpen2(false);
-console.log(open2)
+	const handleClose = () => {
+		setOpen2(false)
+		navigate(`/home`);
+	};
+
+	const handleQuestionCount = (count) => {
+		setOpen2(false)
+		setQCount(count)
+
+	}
 	const questionCount = [10, 20, 30, 40, 50];
 
 	return (
@@ -33,7 +44,7 @@ console.log(open2)
 				onClose={handleClose}
 				aria-labelledby="modal-modal-title"
 				aria-describedby="modal-modal-description"
-				disableBackdropClick
+				hideBackdrop
 			>
 				<Box sx={style}>
 				<h4>Flight Planing and Monitoring</h4>
@@ -43,6 +54,7 @@ console.log(open2)
 							<div
 								key={index}
 								className="questionContainer"
+								onClick={()=>{handleQuestionCount(val)}}
 							>
 								<p>{val} Questions</p>
 							</div>

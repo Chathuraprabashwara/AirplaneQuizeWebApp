@@ -1,0 +1,46 @@
+.ResultSheetContainer {
+    background-color: #0a0b1e;
+    border-radius: 10px;
+    padding: 0px 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 10px;
+    padding-top: 1px;
+    margin-top: 10px;
+
+  }
+
+  .result{
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1{
+    /* font-size: 160px; */
+  }
+  h2 {
+    color: #ffff;
+  }   
+  .details{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(36, 57, 106);
+    border-radius: 20px;
+  }
+  .buttonTry{
+    background-color: #4b90d9;
+    border: none;
+    outline: none;
+    padding: 16px 56px;
+    border-radius: 45px;
+    color: #ffff;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .buttonTry:hover{
+    background-color: #565994;
+  }
