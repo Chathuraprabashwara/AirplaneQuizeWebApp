@@ -16,9 +16,9 @@ function Home({data}) {
     <div style={{height:'75vh', margin:'0 100px'}}>
         <Grid container style={{ justifyContent:'center'}} rowSpacing={4} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {
-            moduleList.map((ModuleName,index) => (
+            moduleList.map((ModuleObject,index) => (
                 <Grid item xs={5}  key={index} >
-                   <Module name={ModuleName.name}/>
+                   <Module name={ModuleObject.name} id = {ModuleObject.id}/>
                 </Grid>
             ))
         }

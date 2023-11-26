@@ -48,7 +48,7 @@ function Questions({
 				>
 					<Grid xs="10">
 						<p className="questionText">
-							{data.id}) {data.question}
+							{data.id} {data.question}
 						</p>
 						<div className="answerContainer">
 							{data.answers.map((val, idx) => (
