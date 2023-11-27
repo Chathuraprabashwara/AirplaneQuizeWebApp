@@ -17,7 +17,7 @@
 
 .Container2 {
 	margin: 20px;
-	background-color: rgb(55 58 101);
+	background-color: rgb(127, 136, 255);
 	display: flex;
 	justify-content: center;
 	border-radius: 10px;
@@ -33,6 +33,7 @@
 	background-color: rgb(127, 136, 255);
 	display: flex;
 	justify-content: space-around;
+	align-items: center;
 	border-radius: 10px;
 	width: 90%;
     
@@ -123,16 +124,17 @@ input[type='number'] {
 	-moz-appearance: textfield;
 }
 .button{
-    background-color: #0e4177;
+	background-color: rgb(61, 68, 165);
     border: none;
     outline: none;
-    padding: 10px 50px;
+    padding: 1px 50px;
     border-radius: 5px;
     color: #ffff;
     cursor: pointer;
+	height: 40px;
 }
 
 .button:hover{
-	background-color: #306daf;
+    background-color: rgb(92, 92, 229);
 
 }

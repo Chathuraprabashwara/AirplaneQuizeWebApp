@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
-import ChangeCircleOutlinedIcon from '@mui/icons-material/ChangeCircleOutlined';
+import React, { useEffect, useState } from 'react';
+import ReplyIcon from '@mui/icons-material/Reply';
 import HomeIcon from '@mui/icons-material/Home';
 import Questions from '../Components/Questions';
-import { IconButton } from '@mui/material';
-import { useLocation ,useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../Css/ModulePage.css'; // Add your external CSS file
 import ResultsSheet from '../Components/ResultsSheet';
+import AlertDialog from '../Components/AlertDialog';
 
 function ModulePage() {
+	const navigate = useNavigate();
 	const { state } = useLocation();
-	const { data } = state;
+	useEffect(() => {
+		// Check if the state is null
+		if (state === null) {
+			// Navigate to the home page
+			navigate('/home');
+		}
+	}, [state, navigate]);
+
+	const CategoryName = sessionStorage.getItem('CategoryName');
+
+	const data = state?.data;
+	const id = state?.id;
 	const [showResult, setShowResult] = useState(false);
 	const [select, setSelect] = useState([]);
 	const [answers, setAnswer] = useState('');
@@ -17,8 +29,9 @@ function ModulePage() {
 	const [isCorrect, setIsCorrect] = useState([]);
 	const [color, setColor] = useState('');
 	const [questionSet, setQuestionSet] = useState(data);
-
-	const navigate = useNavigate()
+	const [error, setError] = useState(false);
+	const [errMessage, setErrMessage] = useState('');
+	const [errBtn, setErrBtn] = useState(false);
 
 	const handleBack = () => {
 		setAnswer(null);
@@ -55,7 +68,9 @@ function ModulePage() {
 		if (select.length > 0) {
 			setShowResult(true);
 		} else {
-			alert('please select ansewers before check results');
+			setError(true);
+			setErrBtn(true);
+			setErrMessage('please select ansewers before check results');
 		}
 		setAnswer(null);
 		setColor(null);
@@ -63,12 +78,31 @@ function ModulePage() {
 
 	return (
 		<>
+			<AlertDialog
+				open={error}
+				setOpen={setError}
+				message={errMessage}
+				oneBtn={errBtn}
+			/>
 			<div className="header-container">
-				<p className="header-text">Flight Planning and Monitoring</p>
+				<p className="header-text">{CategoryName}</p>
 				<div className="header-info">
-					<p className="info-text">Total Questions - {data.length}</p>
-						<ChangeCircleOutlinedIcon className="icon" onClick={() => { navigate('/subCategory/3',data)}} />
-						<HomeIcon className="icon" onClick={() => { navigate('/home')}} />
+					<p className="info-text">Total Questions - {data?.length}</p>
+					<ReplyIcon
+						className="icon"
+						onClick={() => {
+							navigate(`/subCategory/${id}`);
+						}}
+					/>
+					<HomeIcon
+						className="icon"
+						onClick={() => {
+							setError(true);
+							setErrMessage(
+								'Exiting now will result in the loss of your selected Sub Category Question Lists and associated answers. Are you sure you want to proceed?'
+							);
+						}}
+					/>
 				</div>
 			</div>
 			<div>
@@ -83,7 +117,7 @@ function ModulePage() {
 					/>
 				) : (
 					<Questions
-						data={questionSet[question]}
+						data={questionSet && questionSet[question]}
 						answers={answers}
 						setAnswer={setAnswer}
 						isCorrect={isCorrect}
@@ -105,7 +139,7 @@ function ModulePage() {
 							Back
 						</button>
 					)}
-					{question !== questionSet.length - 1 && (
+					{question !== questionSet?.length - 1 && (
 						<button
 							className="nextBtn"
 							onClick={handleNext}
@@ -119,7 +153,7 @@ function ModulePage() {
 					>
 						Show Answer
 					</button>
-					{question === questionSet.length - 1 && (
+					{question === questionSet?.length - 1 && (
 						<button
 							className="showAnswer"
 							onClick={handleShowResultSheet}

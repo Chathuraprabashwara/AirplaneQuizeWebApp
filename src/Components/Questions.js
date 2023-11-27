@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../Css/Questions.css'; // Import the CSS file
 import Grid from '@mui/material/Grid';
 
@@ -46,19 +46,19 @@ function Questions({
 					container
 					sx={{ width: '100%' }}
 				>
-					<Grid xs="10">
+					<Grid xs="12">
 						<p className="questionText">
-							{data.id} {data.question}
+							{data?.id} {data?.question}
 						</p>
 						<div className="answerContainer">
-							{data.answers.map((val, idx) => (
+							{data?.answers.map((val, idx) => (
 								<div
 									key={idx}
 									className="answerText"
 									style={{
 										backgroundColor:
 											(answers === val.id && 'red') ||
-											(handleColor(val.id, data.id) && 'blue'),
+											(handleColor(val.id, data.id) && '#405de8'),
 									}}
 									onClick={() => handleAnswer(val.id, data.id)}
 								>
@@ -67,7 +67,7 @@ function Questions({
 							))}
 						</div>
 					</Grid>
-					{data.image && (
+					{/* {data?.image && (
 						<Grid xs="2">
 							<img
 								style={{
@@ -79,7 +79,7 @@ function Questions({
 								alt="question"
 							/>
 						</Grid>
-					)}
+					)} */}
 				</Grid>
 			</div>
 		</>

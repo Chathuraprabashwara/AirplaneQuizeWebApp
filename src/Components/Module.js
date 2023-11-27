@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 import '../Css/module.css';
 
 const subCategory = [
@@ -60,14 +61,9 @@ function Module({ name , id }) {
 		<div
 			className="ModuleCard"
 			onClick={() => {
-				const ServiceUrl = process.env.REACT_APP_SERVICE_URL;
-    			fetch(ServiceUrl+"/submodules/get/category/"+id)
-				.then(res => res.json())
-				.then(resBody =>{
-				navigate(`/subCategory/${id}`, {
-					state: { subCategory: resBody, prop2: 'value2' },
-				});
-				})
+				navigate(`/subCategory/${id}`);
+				sessionStorage.setItem('CategoryName', name);
+
 			}}
 		>
 			{name}

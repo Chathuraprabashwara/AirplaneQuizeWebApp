@@ -47,7 +47,7 @@
 }
 
 .nextBtn {
-    background-color: #0b5f74;
+	background-color: rgb(61, 68, 165);
     border: none;
     outline: none;
     padding: 10px 50px;
@@ -57,10 +57,10 @@
   }
   
   .nextBtn:hover {
-    background-color: #1ebde4;
+    background-color: rgb(92, 92, 229);
   }
 .BackBtn{
-    background-color: #410b74;
+	background-color: rgb(61, 68, 165);
     border: none;
     outline: none;
     padding: 10px 50px;
@@ -70,12 +70,12 @@
 }
 
 .BackBtn:hover{
-    background-color: #1ebde4;
+    background-color: rgb(92, 92, 229);
 
 }
 
 .showAnswer{
-	background-color: #265b69;
+	background-color: rgb(61, 68, 165);
     border: none;
     outline: none;
     padding: 10px 50px;
@@ -85,6 +85,10 @@
 }
 
 .showAnswer:hover{
-	background-color: #1ebde4;
+    background-color: rgb(92, 92, 229);
 
 }
+
+
+
+

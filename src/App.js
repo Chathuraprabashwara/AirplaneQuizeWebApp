@@ -8,13 +8,13 @@ function App() {
 	return (
 		<div>
       <Routes>
-			<Route
+			{/* <Route
 				path="/"
 				element={<LoadingScreen />}
-			/>
+			/> */}
 			<Route
 				path="/home"
-				element={<Home data="test"/>}
+				element={<Home/>}
 			/>
       	<Route
 				path="/module/:moduleName"

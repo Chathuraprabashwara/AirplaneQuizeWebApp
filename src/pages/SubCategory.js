@@ -1,158 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
 import '../Css/subCategory.css';
-import { useLocation, useNavigate } from 'react-router-dom';
-
-const data2 = [
-	{
-		id: 1,
-		question: 'This Question 1',
-		sub_module_id: 1,
-		answers: [
-			{
-				id: 1,
-				answer: 'anwer 1',
-				question_id: 1,
-				is_image: true,
-				is_correct_answer: false,
-			},
-			{
-				id: 2,
-				answer: 'anwer 2',
-				question_id: 1,
-				is_image: true,
-				is_correct_answer: false,
-			},
-			{
-				id: 3,
-				answer: 'anwer 3',
-				question_id: 1,
-				is_image: true,
-				is_correct_answer: true,
-			},
-			{
-				id: 4,
-				answer: 'anwer 4',
-				question_id: 1,
-				is_image: true,
-				is_correct_answer: false,
-			},
-		],
-	},
-	{
-		id: 2,
-		question: 'This Question 2',
-		sub_module_id: 1,
-		answers: [
-			{
-				id: 1,
-				answer: 'anwer 1',
-				question_id: 2,
-				is_image: true,
-				is_correct_answer: false,
-			},
-			{
-				id: 2,
-				answer: 'anwer 2',
-				question_id: 2,
-				is_image: true,
-				is_correct_answer: false,
-			},
-			{
-				id: 3,
-				answer: 'anwer 3',
-				question_id: 2,
-				is_image: true,
-				is_correct_answer: true,
-			},
-			{
-				id: 4,
-				answer: 'anwer 4',
-				question_id: 2,
-				is_image: true,
-				is_correct_answer: false,
-			},
-		],
-	},
-	{
-		id: 3,
-		question: 'This Question 3',
-		sub_module_id: 1,
-		answers: [
-			{
-				id: 1,
-				answer: 'anwer 1',
-				question_id: 3,
-				is_image: true,
-				is_correct_answer: false,
-			},
-			{
-				id: 2,
-				answer: 'anwer 2',
-				question_id: 3,
-				is_image: true,
-				is_correct_answer: false,
-			},
-			{
-				id: 3,
-				answer: 'anwer 3',
-				question_id: 3,
-				is_image: true,
-				is_correct_answer: false,
-			},
-			{
-				id: 4,
-				answer: 'anwer 4',
-				question_id: 3,
-				is_image: true,
-				is_correct_answer: true,
-			},
-		],
-	},
-	{
-		id: 4,
-		question: 'This Question 4',
-		sub_module_id: 1,
-		answers: [
-			{
-				id: 1,
-				answer: 'anwer 1',
-				question_id: 4,
-				is_image: true,
-				is_correct_answer: true,
-			},
-			{
-				id: 2,
-				answer: 'anwer 2',
-				question_id: 4,
-				is_image: true,
-				is_correct_answer: false,
-			},
-			{
-				id: 3,
-				answer: 'anwer 3',
-				question_id: 4,
-				is_image: true,
-				is_correct_answer: false,
-			},
-			{
-				id: 4,
-				answer: 'anwer 4',
-				question_id: 4,
-				is_image: true,
-				is_correct_answer: false,
-			},
-		],
-	},
-];
+import { useNavigate, useParams } from 'react-router-dom';
+import AlertDialog from '../Components/AlertDialog';
 
 export default function SubCategory() {
 	// Access props passed from the previous page
 	const [selectedCategory, setSelectedCategory] = useState([]);
+	const [subCategory, setSubCategory] = useState([]);
+	const [error, setError] = useState(false);
 	const [qNumber, setQNumber] = useState('');
-	const { state } = useLocation();
 	const navigate = useNavigate();
 
-	const { subCategory } = state;
+	const { id } = useParams();
+	const CategoryName = sessionStorage.getItem('CategoryName');
+
+	useEffect(() => {
+		axios
+			.get(`${process.env.REACT_APP_SERVICE_URL}/submodules/get/category/${id}`)
+			.then((response) => setSubCategory(response.data))
+			.catch((error) => console.error(error));
+	}, []);
 
 	const handleSelectCategory = (id) => {
 		if (selectedCategory.includes(id)) {
@@ -170,22 +39,23 @@ export default function SubCategory() {
 	};
 
 	const handleStart = () => {
-		const ServiceUrl = process.env.REACT_APP_SERVICE_URL;
 		const data = {
 			sub_module_ids: selectedCategory,
 			q_limit: qNumber,
 		};
 		if (selectedCategory.length > 0) {
-			fetch(ServiceUrl+"/questions/answers/get/categories",{
-				method:"POST",
-				body:JSON.stringify(data),
-				headers:{"Content-type":"application/json; charset=UTF-8"}
-			})
-  		  	.then(res => res.json())
-			.then(resBody => navigate(`/module/${selectedCategory.toString()}`, { state: { data: resBody} }))
-    		.catch(err => console.log(err));
+			axios
+				.post(
+					`${process.env.REACT_APP_SERVICE_URL}/questions/answers/get/categories`,
+					data
+				)
+				.then((res) => {
+					navigate(`/module/${selectedCategory.toString()}`, {
+						state: { data: res.data, id: id },
+					});
+				});
 		} else {
-			alert('please Select atleast one sub Category');
+			setError(true);
 		}
 
 		console.log(data);
@@ -194,8 +64,31 @@ export default function SubCategory() {
 	console.log(subCategory);
 	return (
 		<div className="main">
+			<AlertDialog
+				open={error}
+				setOpen={setError}
+				message={
+					'You should select at least one Sub Category to Start the Exams'
+				}
+			/>
 			<div className="Container">
-				<h1>Module Name</h1>
+				<div style={{ alignSelf: 'center' }}>
+					<ArrowCircleLeftOutlinedIcon
+						style={{
+							color: '#ffff',
+							marginLeft: '10px',
+							fontSize: '50px',
+							marginTop: '10px',
+							cursor: 'pointer',
+						}}
+						onClick={() => {
+							navigate('/home');
+						}}
+					/>
+				</div>
+				<div style={{ margin: 'auto' }}>
+					<h1>{CategoryName}</h1>
+				</div>
 			</div>
 			<div className="Container2">
 				<div className="subCategory">
