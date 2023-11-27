@@ -54,15 +54,20 @@ const subCategory = [
 	},
 ];
 
-function Module({ name }) {
+function Module({ name , id }) {
 	const navigate = useNavigate();
 	return (
 		<div
 			className="ModuleCard"
 			onClick={() => {
-				navigate(`/subCategory/3`, {
-					state: { subCategory: subCategory, prop2: 'value2' },
+				const ServiceUrl = process.env.REACT_APP_SERVICE_URL;
+    			fetch(ServiceUrl+"/submodules/get/category/"+id)
+				.then(res => res.json())
+				.then(resBody =>{
+				navigate(`/subCategory/${id}`, {
+					state: { subCategory: resBody, prop2: 'value2' },
 				});
+				})
 			}}
 		>
 			{name}

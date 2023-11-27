@@ -170,12 +170,20 @@ export default function SubCategory() {
 	};
 
 	const handleStart = () => {
+		const ServiceUrl = process.env.REACT_APP_SERVICE_URL;
 		const data = {
-			SubCategory: selectedCategory,
-			questions: qNumber,
+			sub_module_ids: selectedCategory,
+			q_limit: qNumber,
 		};
 		if (selectedCategory.length > 0) {
-			navigate(`/module/2`, { state: { data: data2 } });
+			fetch(ServiceUrl+"/questions/answers/get/categories",{
+				method:"POST",
+				body:JSON.stringify(data),
+				headers:{"Content-type":"application/json; charset=UTF-8"}
+			})
+  		  	.then(res => res.json())
+			.then(resBody => navigate(`/module/${selectedCategory.toString()}`, { state: { data: resBody} }))
+    		.catch(err => console.log(err));
 		} else {
 			alert('please Select atleast one sub Category');
 		}
