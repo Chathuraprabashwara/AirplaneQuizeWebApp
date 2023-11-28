@@ -8,10 +8,10 @@ function App() {
 	return (
 		<div>
       <Routes>
-			{/* <Route
+			<Route
 				path="/"
-				element={<LoadingScreen />}
-			/> */}
+				element={<Home />}
+			/>
 			<Route
 				path="/home"
 				element={<Home/>}

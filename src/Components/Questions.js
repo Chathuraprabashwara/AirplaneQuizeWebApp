@@ -62,7 +62,7 @@ function Questions({
 									}}
 									onClick={() => handleAnswer(val.id, data.id)}
 								>
-									{val.id}) {val.answer}
+									{idx+1}) {val.answer}
 								</div>
 							))}
 						</div>

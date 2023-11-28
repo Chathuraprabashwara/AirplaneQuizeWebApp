@@ -70,7 +70,7 @@ function ModulePage() {
 		} else {
 			setError(true);
 			setErrBtn(true);
-			setErrMessage('please select ansewers before check results');
+			setErrMessage('Please select ansewers before check results');
 		}
 		setAnswer(null);
 		setColor(null);
