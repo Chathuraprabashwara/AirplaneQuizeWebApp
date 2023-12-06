@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 
 function Questions({
 	data,
+	id,
 	answers,
 	setColor,
 	setSelect,
@@ -48,7 +49,9 @@ function Questions({
 				>
 					<Grid xs="12">
 						<p className="questionText">
-							{data?.id} {data?.question}
+							{/* {data?.id} {data?.question} */}
+							<span>{id})&nbsp;</span>
+							{data?.question}
 						</p>
 						<div className="answerContainer">
 							{data?.answers.map((val, idx) => (
