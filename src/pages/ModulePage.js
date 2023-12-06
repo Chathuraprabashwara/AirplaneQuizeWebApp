@@ -70,7 +70,7 @@ function ModulePage() {
 		} else {
 			setError(true);
 			setErrBtn(true);
-			setErrMessage('Please select ansewers before check results');
+			setErrMessage('Please select answer before check results');
 		}
 		setAnswer(null);
 		setColor(null);
@@ -118,7 +118,6 @@ function ModulePage() {
 				) : (
 					<Questions
 						data={questionSet && questionSet[question]}
-						id =  {question}
 						answers={answers}
 						setAnswer={setAnswer}
 						isCorrect={isCorrect}
