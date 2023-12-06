@@ -118,6 +118,7 @@ function ModulePage() {
 				) : (
 					<Questions
 						data={questionSet && questionSet[question]}
+						id={question}
 						answers={answers}
 						setAnswer={setAnswer}
 						isCorrect={isCorrect}

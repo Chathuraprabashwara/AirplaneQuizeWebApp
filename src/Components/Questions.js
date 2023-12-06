@@ -50,7 +50,7 @@ function Questions({
 					<Grid xs="12">
 						<p className="questionText">
 							{/* {data?.id} {data?.question} */}
-							<span>{id})&nbsp;</span>
+							<span>{id+1})&nbsp;</span>
 							{data?.question}
 						</p>
 						<div className="answerContainer">
