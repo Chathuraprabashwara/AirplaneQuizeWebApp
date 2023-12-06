@@ -20,7 +20,7 @@ function ResultsSheet({
 	return (
 		<div className="ResultSheetContainer">
 			<div className="result">
-				<h1>{percentage}%</h1>
+				<h1 className='resultText'>{percentage}%</h1>
 			</div>
 			<div className="details">
 				<h2>Correct Answers : {isCorrect.length}</h2>

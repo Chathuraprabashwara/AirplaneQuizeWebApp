@@ -9,7 +9,6 @@ function Questions({
 	setSelect,
 	select,
 }) {
-	console.log(data);
 	const handleAnswer = (id, qid) => {
 		setColor(id);
 		console.log(qid);

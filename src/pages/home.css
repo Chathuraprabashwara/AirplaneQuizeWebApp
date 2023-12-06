@@ -1,0 +1,39 @@
+/* Home.css */
+
+.container {
+    padding: 20px;
+  }
+  
+  .moduleTitleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+
+  }
+
+  
+  .moduleTitle {
+    color: #BBE1FA;
+    font-size: 60px;
+  }
+  
+
+ /* Media query for screens with a maximum width of 600px (typical for mobile phones) */
+@media screen and (max-width: 600px) {
+    .moduleTitle {
+      font-size: 25px; /* Adjust font size for smaller screens */
+    }
+    .moduleTitleContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 15vh;
+    
+      }
+
+      .container {
+        padding: 10px;
+      }
+      
+  }

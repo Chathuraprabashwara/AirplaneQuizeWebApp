@@ -1,39 +1,38 @@
 /* Questions.css */
 
 .questionContainer2 {
-    background-color: #0a0b1e;
-    border-radius: 10px;
-    padding: 0px 10px;
-    margin-left: 30px;
-    margin-right: 30px;
-    padding-bottom: 10px;
-    padding-top: 1px;
-    margin-top: 10px;
-  }
-  
-  .questionText {
-    color: #bbe1fa;
-  }
-  
-  .answerContainer {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .answerText {
-    color: #bbe1fa;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: rgb(100, 100, 159);
+	background-color: #0a0b1e;
+	border-radius: 10px;
+	padding: 0px 10px;
+	margin-left: 30px;
+	margin-right: 30px;
+	padding-bottom: 10px;
+	padding-top: 1px;
+	margin-top: 10px;
+}
 
-    
-  }
+.questionText {
+	color: #bbe1fa;
+}
 
-  .answerText:hover{
-    background-color: rgb(92, 92, 229);
+.answerContainer {
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	flex-direction: column;
+	gap: 10px;
+}
 
-  }
+.answerText {
+	color: #bbe1fa;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: rgb(100, 100, 159);
+}
+
+.answerText:hover {
+	background-color: rgb(92, 92, 229);
+}
+
+

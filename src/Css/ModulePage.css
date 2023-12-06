@@ -1,4 +1,10 @@
 /* ModulePage.css */
+:root {
+	--primary-color: rgb(61, 68, 165);
+	--hover-color: rgb(92, 92, 229);
+	--text-color: #bbe1fa;
+	--btn-text-color: #ffff;
+  }
 
 .header-container {
 	display: flex;
@@ -12,7 +18,7 @@
 }
 
 .header-text {
-	color: #bbe1fa;
+	color: var(--text-color);
 }
 
 .header-info {
@@ -22,7 +28,7 @@
 }
 
 .info-text {
-	color: #bbe1fa;
+	color: var(--text-color);
 }
 
 .info-icon {
@@ -34,7 +40,7 @@
 .icon {
 	width: 30px;
 	height: 30px;
-	color: #bbe1fa;
+	color: var(--text-color);
 	margin-left: 10px;
 }
 
@@ -47,48 +53,77 @@
 }
 
 .nextBtn {
-	background-color: rgb(61, 68, 165);
+	background-color: var(--primary-color);
     border: none;
     outline: none;
     padding: 10px 50px;
     border-radius: 5px;
-    color: #ffff;
+    color: var(--btn-text-color);
     cursor: pointer;
   }
   
   .nextBtn:hover {
-    background-color: rgb(92, 92, 229);
+    background-color:var(--hover-color);
   }
 .BackBtn{
-	background-color: rgb(61, 68, 165);
+	background-color: var(--primary-color);
     border: none;
     outline: none;
     padding: 10px 50px;
     border-radius: 5px;
-    color: #ffff;
+    color: var(--btn-text-color);
     cursor: pointer;
 }
 
 .BackBtn:hover{
-    background-color: rgb(92, 92, 229);
+    background-color:var(--hover-color);
 
 }
 
 .showAnswer{
-	background-color: rgb(61, 68, 165);
+	background-color: var(--primary-color);
     border: none;
     outline: none;
     padding: 10px 50px;
     border-radius: 5px;
-    color: #ffff;
+    color: var(--btn-text-color);
     cursor: pointer;
 }
 
 .showAnswer:hover{
-    background-color: rgb(92, 92, 229);
+    background-color:var(--hover-color);
 
 }
 
-
+@media screen and (max-width: 600px) {
+	
+	.BackBtn{
+		background-color: var(--primary-color);
+		border: none;
+		outline: none;
+		padding: 10px 10px;
+		border-radius: 5px;
+		color: var(--btn-text-color);
+		cursor: pointer;
+	}
+	.nextBtn {
+		background-color: var(--primary-color);
+		border: none;
+		outline: none;
+		padding: 10px 10px;
+		border-radius: 5px;
+		color: var(--btn-text-color);
+		cursor: pointer;
+	  }
+	  .showAnswer{
+		background-color: var(--primary-color);
+		border: none;
+		outline: none;
+		padding: 10px 10px;
+		border-radius: 5px;
+		color: var(--btn-text-color);
+		cursor: pointer;
+	}
+}
 
 

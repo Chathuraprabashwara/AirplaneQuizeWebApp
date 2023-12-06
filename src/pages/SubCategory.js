@@ -9,6 +9,7 @@ export default function SubCategory() {
 	// Access props passed from the previous page
 	const [selectedCategory, setSelectedCategory] = useState([]);
 	const [subCategory, setSubCategory] = useState([]);
+	const [selectedCategoryNames, setSelectedCategoryNames] = useState([])
 	const [error, setError] = useState(false);
 	const [qNumber, setQNumber] = useState('');
 	const navigate = useNavigate();
@@ -23,12 +24,18 @@ export default function SubCategory() {
 			.catch((error) => console.error(error));
 	}, []);
 
-	const handleSelectCategory = (id) => {
+	const handleSelectCategory = (id,name) => {
 		if (selectedCategory.includes(id)) {
 			const filterCategory = selectedCategory.filter((val) => val !== id);
+			const filterCategoryNames = selectedCategoryNames.filter((val) => val !== name);
+
 			setSelectedCategory(filterCategory);
+			setSelectedCategoryNames(filterCategoryNames)
 		} else {
 			setSelectedCategory((prev) => [...prev, id]);
+			setSelectedCategoryNames((prev) => [...prev,name])
+
+
 		}
 	};
 
@@ -37,6 +44,37 @@ export default function SubCategory() {
 		setSelectedCategory(IdList);
 		console.log(IdList);
 	};
+
+
+
+const createUniqueString = (inputArray) => {
+  // Convert the input array to a string
+  const inputString = inputArray.join(',');
+
+  // Simple hash function to generate a hash code
+  const hash = (str) => {
+    let hashValue = 0;
+    for (let i = 0; i < str.length; i++) {
+      const charCode = str.charCodeAt(i);
+      hashValue = (hashValue << 5) - hashValue + charCode;
+    }
+    return hashValue;
+  };
+
+  // Get a hash code for the input string
+  const hashCode = hash(inputString);
+
+  // Convert the hash code to a string and ensure it is within the desired length range
+  const resultString = Math.abs(hashCode).toString().slice(0, 10);
+
+  // Ensure the result string is at least 5 characters long
+  const finalString = resultString.padEnd(5, '0');
+
+  return finalString;
+};
+
+const QuestionsPageId =createUniqueString(selectedCategoryNames)
+	
 
 	const handleStart = () => {
 		const data = {
@@ -50,7 +88,7 @@ export default function SubCategory() {
 					data
 				)
 				.then((res) => {
-					navigate(`/module/${selectedCategory.toString()}`, {
+					navigate(`/module/${QuestionsPageId}`, {
 						state: { data: res.data, id: id },
 					});
 				});
@@ -60,8 +98,6 @@ export default function SubCategory() {
 
 		console.log(data);
 	};
-
-	console.log(subCategory);
 	return (
 		<div className="main">
 			<AlertDialog
@@ -74,13 +110,7 @@ export default function SubCategory() {
 			<div className="Container">
 				<div style={{ alignSelf: 'center' }}>
 					<ArrowCircleLeftOutlinedIcon
-						style={{
-							color: '#ffff',
-							marginLeft: '10px',
-							fontSize: '50px',
-							marginTop: '10px',
-							cursor: 'pointer',
-						}}
+						className='backBtnIcon'
 						onClick={() => {
 							navigate('/home');
 						}}
@@ -98,7 +128,7 @@ export default function SubCategory() {
 							style={{
 								backgroundColor: selectedCategory.includes(val.id) && '#2cb7a9',
 							}}
-							onClick={() => handleSelectCategory(val.id)}
+							onClick={() => handleSelectCategory(val.id,val.name)}
 							key={val.id}
 						>
 							<p>{val.name}</p>
