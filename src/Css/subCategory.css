@@ -1,14 +1,17 @@
 :root {
-	--main-bg-color: rgb(127, 136, 255);
-	--accent-color: rgb(102, 110, 225);
-	--hover-accent-color: rgb(61, 68, 165);
+	--main-bg-color: #0a0b1e;
+	--accent-color: rgb(36 36 77);
+	--hover-accent-color: rgb(36 36 77);
 	--text-color: #ffff;
-	--button-hover-color: rgb(92, 92, 229);
+	--button-hover-color:#2cb7a9;
 	--input-focus-border-color: #4caf50;
 	--input-focus-shadow: 0 0 5px rgba(96, 76, 175, 0.5);
 	--submit-button-bg-color: #4c8caf;
 	--box-shadow: rgba(179, 187, 193, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   }
+  /* --module-background: #76b7d4;
+  --module-text-color: #ffff;
+  --module-hover-background: rgb(61, 125, 165); */
 
 .main {
 	display: flex;
@@ -20,11 +23,18 @@
 
 .Container {
 	margin: 20px;
-	background-color: var(--main-bg-color);
 	display: flex;
 	justify-content: center;
 	border-radius: 10px;
 	width: 90%;
+
+	/* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .Container2 {
@@ -38,6 +48,13 @@
 	overflow-y: auto;
 	box-shadow: rgba(179, 187, 193, 0.3) 0px 1px 2px 0px,
 		rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+		background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .Container3 {
@@ -48,15 +65,24 @@
 	align-items: center;
 	border-radius: 10px;
 	width: 90%;
+	background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
     
 }
 
 h1 {
 	color: var(--text-color);
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important; /* Horizontal offset, vertical offset, blur radius, and shadow color */
+
 }
 
 h3 {
 	color: var(--text-color);
+
 }
 
 p {
@@ -66,7 +92,7 @@ p {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 90%;
+	width: 50%;
 }
 
 .subName {
@@ -83,7 +109,7 @@ p {
 }
 
 .subName:hover {
-	background-color: var(--hover-accent-color);
+	background-color: rgb(3, 9, 64);
 }
 
 .questionCount {

@@ -9,12 +9,14 @@
     justify-content: center;
     align-items: center;
     height: 45vh;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important; /* Horizontal offset, vertical offset, blur radius, and shadow color */
+
 
   }
 
   
   .moduleTitle {
-    color: #BBE1FA;
+    color: #ffff;
     font-size: 60px;
   }
   

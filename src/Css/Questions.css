@@ -1,18 +1,25 @@
 /* Questions.css */
 
 .questionContainer2 {
-	background-color: #0a0b1e;
-	border-radius: 10px;
 	padding: 0px 10px;
 	margin-left: 30px;
 	margin-right: 30px;
 	padding-bottom: 10px;
 	padding-top: 1px;
-	margin-top: 10px;
+	margin-top: 40px;
+
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(5px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .questionText {
-	color: #bbe1fa;
+	color:black;
+	font-weight: 500;
+	font-size: 20px;
 }
 
 .answerContainer {
@@ -24,15 +31,16 @@
 }
 
 .answerText {
-	color: #bbe1fa;
+	color: #fafcfd;
+	font-weight: 500;
 	padding: 5px 10px;
 	border-radius: 5px;
 	cursor: pointer;
-	background-color: rgb(100, 100, 159);
+	background-color: rgb(36 36 77);;
 }
 
 .answerText:hover {
-	background-color: rgb(92, 92, 229);
+	background-color: rgb(3, 9, 64);
 }
 
 

@@ -8,7 +8,8 @@ function ResultsSheet({
 	setQuestion,
 	setSelect,
 }) {
-	const percentage = (isCorrect.length / data.length) * 100;
+	const percentageVal = (isCorrect.length / data.length) * 100;
+	const percentage = Math.round(percentageVal * 10) / 10;
 
 	const handleRetry = () => {
 		const incorrectAnswers = data.filter((val) => !isCorrect.includes(val.id));

@@ -1,9 +1,9 @@
 :root {
   --main-bg-color: #0a0b1e;
   --text-color: #ffff;
-  --details-bg-color: rgb(36, 57, 106);
-  --button-bg-color: #4b90d9;
-  --button-hover-color: #565994;
+  --details-bg-color: rgb(36 36 77);
+  --button-bg-color: #e20a56;
+  --button-hover-color: #b90846;
 }
 
 .ResultSheetContainer {
@@ -14,7 +14,13 @@
   margin-right: 30px;
   padding-bottom: 10px;
   padding-top: 1px;
-  margin-top: 10px;
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.2);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(5px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .result {

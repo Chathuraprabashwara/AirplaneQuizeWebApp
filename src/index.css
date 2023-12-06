@@ -1,9 +1,21 @@
 body {
   margin: 0;
   padding:0;
-  background-color: #2B2E4A;
-  font-family: 'Poppins', sans-serif;
+  /* background-color: #04214f; */
+  background-image: url("https://img.freepik.com/free-vector/travel-pattern-with-elements-dash-lines_23-2148047649.jpg?w=996&t=st=1701890092~exp=1701890692~hmac=707492c598819fb2247923b22cb2084d4abb0be0cc94fc95b90905ef69144587");
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+
 }
+
+.glass-container {
+  background: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+  height: 100vh;
+  backdrop-filter: blur('5px');
+  
+
+}
+
 
 
 ::-webkit-scrollbar{
