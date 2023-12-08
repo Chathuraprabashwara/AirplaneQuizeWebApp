@@ -1,17 +1,25 @@
+:root {
+  --module-background: rgb(36 36 77);
+  --module-text-color: #ffff;
+  --module-hover-background: rgb(61, 125, 165);
+}
+
 .ModuleCard {
-    width: 100%;
-    background-color: rgb(127, 136, 255);
-    color: #BBE1FA;
-    height: 100px;
-    border-radius: 5px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
+  width: 100%;
+  background-color: var(--module-background);
+  color: var(--module-text-color);
+  height: 100px;
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+
+}
 
 .ModuleCard:hover {
-	background-color: rgb(61, 68, 165);
-
+  background-color: var(--module-hover-background);
 }

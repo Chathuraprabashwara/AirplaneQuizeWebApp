@@ -1,0 +1,41 @@
+/* Home.css */
+
+.container {
+    padding: 20px;
+  }
+  
+  .moduleTitleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important; /* Horizontal offset, vertical offset, blur radius, and shadow color */
+
+
+  }
+
+  
+  .moduleTitle {
+    color: #ffff;
+    font-size: 60px;
+  }
+  
+
+ /* Media query for screens with a maximum width of 600px (typical for mobile phones) */
+@media screen and (max-width: 600px) {
+    .moduleTitle {
+      font-size: 25px; /* Adjust font size for smaller screens */
+    }
+    .moduleTitleContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 15vh;
+    
+      }
+
+      .container {
+        padding: 10px;
+      }
+      
+  }

@@ -10,7 +10,6 @@ function Questions({
 	setSelect,
 	select,
 }) {
-	console.log(data);
 	const handleAnswer = (id, qid) => {
 		setColor(id);
 		console.log(qid);
@@ -60,8 +59,8 @@ function Questions({
 									className="answerText"
 									style={{
 										backgroundColor:
-											(answers === val.id && 'red') ||
-											(handleColor(val.id, data.id) && '#405de8'),
+											(answers === val.id && '#7e0632') ||
+											(handleColor(val.id, data.id) && '#2cb7a9'),
 									}}
 									onClick={() => handleAnswer(val.id, data.id)}
 								>

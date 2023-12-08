@@ -3,6 +3,7 @@ import LoadingScreen from './LoadingScreen';
 import Module from '../Components/Module';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
+import './home.css'
 
 function Home({ data }) {
 	const [moduleList, setmoduleList] = useState([]);
@@ -17,41 +18,42 @@ function Home({ data }) {
 			{moduleList.length === 0 ? (
 				<LoadingScreen />
 			) : (
-				<div>
-					<div
-						style={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							height: '25vh',
-							color: '#BBE1FA',
-							fontSize: '60px',
-						}}
-					>
-						ATPL Examination System{' '}
-					</div>
-					<div style={{ height: '75vh', margin: '0 100px' }}>
-						<Grid
-							container
-							justifyContent="space-between"
-							rowSpacing={4}
-							columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+				<Grid
+					container
+					justifyContent="center"
+				>
+					<Grid item xs={12} className='moduleTitleContainer'>
+						<h1
+							className='moduleTitle'
 						>
-							{moduleList.map((ModuleObject, index) => (
-								<Grid
-									item
-									xs={4}
-									key={index}
-								>
-									<Module
-										name={ModuleObject.name}
-										id={ModuleObject.id}
-									/>
-								</Grid>
-							))}
-						</Grid>
-					</div>
-				</div>
+							ATPL Examination System{' '}
+						</h1>
+					</Grid>
+          <Grid item xs={10}>
+            <Grid
+						item
+						container
+						justifyContent='space-evenly'
+						rowSpacing={4}
+						columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+					>
+						{moduleList.map((ModuleObject, index) => (
+							<Grid
+								item
+								xs={12}
+                md={4}
+								key={index}
+							>
+								<Module
+									name={ModuleObject.name}
+									id={ModuleObject.id}
+								/>
+							</Grid>
+						))}
+					</Grid>
+          </Grid>
+					
+				</Grid>
 			)}
 		</>
 	);
