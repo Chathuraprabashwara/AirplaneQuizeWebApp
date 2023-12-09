@@ -32,6 +32,7 @@ function ModulePage() {
 	const [error, setError] = useState(false);
 	const [errMessage, setErrMessage] = useState('');
 	const [errBtn, setErrBtn] = useState(false);
+	const [route,setRoute] = useState('');
 
 	const handleBack = () => {
 		setAnswer(null);
@@ -70,7 +71,7 @@ function ModulePage() {
 		} else {
 			setError(true);
 			setErrBtn(true);
-			setErrMessage('Please select ansewers before check results');
+			setErrMessage('Please select the answer before check results');
 		}
 		setAnswer(null);
 		setColor(null);
@@ -83,21 +84,33 @@ function ModulePage() {
 				setOpen={setError}
 				message={errMessage}
 				oneBtn={errBtn}
+				route={route}
 			/>
 			<div className="header-container">
 				<p className="header-text">{CategoryName}</p>
 				<div className="header-info">
-					<p className="info-text">Total Questions - {data?.length}</p>
+					<div>
+					<p className="info-text">Total Questions - {data?.length}</p> 
+					<p className="info-text">Remaining Questions - {data?.length - question}</p>
+					</div>
+					
 					<ReplyIcon
 						className="icon"
 						onClick={() => {
-							navigate(`/subCategory/${id}`);
+							setError(true);
+							setErrBtn(false);
+							setRoute(`/subCategory/${id}`)
+							setErrMessage(
+								'Exiting now will result in the loss of your selected Sub Category Question Lists and associated answers. Are you sure you want to proceed?'
+							);
 						}}
 					/>
 					<HomeIcon
 						className="icon"
 						onClick={() => {
 							setError(true);
+							setErrBtn(false);
+							setRoute('/home')
 							setErrMessage(
 								'Exiting now will result in the loss of your selected Sub Category Question Lists and associated answers. Are you sure you want to proceed?'
 							);
@@ -158,7 +171,7 @@ function ModulePage() {
 							className="showAnswer"
 							onClick={handleShowResultSheet}
 						>
-							Show Result Sheet
+							Finish
 						</button>
 					)}
 				</div>

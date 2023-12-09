@@ -41,7 +41,11 @@
 
 .info-text {
 	color: #ffff;
-	font-weight: bold;}
+	font-weight: bold;
+	font-size:10px;
+
+}
+	
 
 .info-icon {
 	margin-left: 10px;

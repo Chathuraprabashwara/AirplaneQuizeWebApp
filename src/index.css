@@ -2,9 +2,11 @@ body {
   margin: 0;
   padding:0;
   /* background-color: #04214f; */
-  background-image: url("https://img.freepik.com/free-vector/travel-pattern-with-elements-dash-lines_23-2148047649.jpg?w=996&t=st=1701890092~exp=1701890692~hmac=707492c598819fb2247923b22cb2084d4abb0be0cc94fc95b90905ef69144587");
+  background-image: url("./assest/plane7.png");
   font-family: 'Montserrat', sans-serif;
-  height: 100vh;
+  background-size: cover;
+  /* background-position: center center; */
+
 
 }
 

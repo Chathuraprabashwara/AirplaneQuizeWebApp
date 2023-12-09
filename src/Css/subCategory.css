@@ -141,6 +141,8 @@ input:focus {
 	outline: none;
 	border-color: var(--input-focus-border-color); /* Green color */
 	box-shadow: var(--input-focus-shadow); /* Light green shadow */
+	font-weight: 1000;
+
 }
 
 /* Style for a submit button (optional) */

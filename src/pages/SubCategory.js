@@ -4,12 +4,13 @@ import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutl
 import '../Css/subCategory.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import AlertDialog from '../Components/AlertDialog';
+import LoadingScreen from '../pages/LoadingScreen';
 
 export default function SubCategory() {
 	// Access props passed from the previous page
 	const [selectedCategory, setSelectedCategory] = useState([]);
 	const [subCategory, setSubCategory] = useState([]);
-	const [selectedCategoryNames, setSelectedCategoryNames] = useState([])
+	const [selectedCategoryNames, setSelectedCategoryNames] = useState([]);
 	const [error, setError] = useState(false);
 	const [qNumber, setQNumber] = useState('');
 	const navigate = useNavigate();
@@ -24,18 +25,18 @@ export default function SubCategory() {
 			.catch((error) => console.error(error));
 	}, []);
 
-	const handleSelectCategory = (id,name) => {
+	const handleSelectCategory = (id, name) => {
 		if (selectedCategory.includes(id)) {
 			const filterCategory = selectedCategory.filter((val) => val !== id);
-			const filterCategoryNames = selectedCategoryNames.filter((val) => val !== name);
+			const filterCategoryNames = selectedCategoryNames.filter(
+				(val) => val !== name
+			);
 
 			setSelectedCategory(filterCategory);
-			setSelectedCategoryNames(filterCategoryNames)
+			setSelectedCategoryNames(filterCategoryNames);
 		} else {
 			setSelectedCategory((prev) => [...prev, id]);
-			setSelectedCategoryNames((prev) => [...prev,name])
-
-
+			setSelectedCategoryNames((prev) => [...prev, name]);
 		}
 	};
 
@@ -45,36 +46,33 @@ export default function SubCategory() {
 		console.log(IdList);
 	};
 
+	const createUniqueString = (inputArray) => {
+		// Convert the input array to a string
+		const inputString = inputArray.join(',');
 
+		// Simple hash function to generate a hash code
+		const hash = (str) => {
+			let hashValue = 0;
+			for (let i = 0; i < str.length; i++) {
+				const charCode = str.charCodeAt(i);
+				hashValue = (hashValue << 5) - hashValue + charCode;
+			}
+			return hashValue;
+		};
 
-const createUniqueString = (inputArray) => {
-  // Convert the input array to a string
-  const inputString = inputArray.join(',');
+		// Get a hash code for the input string
+		const hashCode = hash(inputString);
 
-  // Simple hash function to generate a hash code
-  const hash = (str) => {
-    let hashValue = 0;
-    for (let i = 0; i < str.length; i++) {
-      const charCode = str.charCodeAt(i);
-      hashValue = (hashValue << 5) - hashValue + charCode;
-    }
-    return hashValue;
-  };
+		// Convert the hash code to a string and ensure it is within the desired length range
+		const resultString = Math.abs(hashCode).toString().slice(0, 10);
 
-  // Get a hash code for the input string
-  const hashCode = hash(inputString);
+		// Ensure the result string is at least 5 characters long
+		const finalString = resultString.padEnd(5, '0');
 
-  // Convert the hash code to a string and ensure it is within the desired length range
-  const resultString = Math.abs(hashCode).toString().slice(0, 10);
+		return finalString;
+	};
 
-  // Ensure the result string is at least 5 characters long
-  const finalString = resultString.padEnd(5, '0');
-
-  return finalString;
-};
-
-const QuestionsPageId =createUniqueString(selectedCategoryNames)
-	
+	const QuestionsPageId = createUniqueString(selectedCategoryNames);
 
 	const handleStart = () => {
 		const data = {
@@ -99,79 +97,85 @@ const QuestionsPageId =createUniqueString(selectedCategoryNames)
 		console.log(data);
 	};
 	return (
-		<div className="main">
-			<AlertDialog
-				open={error}
-				setOpen={setError}
-				message={
-					'You should select at least one Sub Category to Start the Exams'
-				}
-			/>
-			<div className="Container">
-				<div style={{ alignSelf: 'center' }}>
-					<ArrowCircleLeftOutlinedIcon
-						className='backBtnIcon'
-						onClick={() => {
-							navigate('/home');
-						}}
-					/>
-				</div>
-				<div style={{ margin: 'auto' }}>
-					<h1>{CategoryName}</h1>
-				</div>
-			</div>
-			<div className="Container2">
-				<div className="subCategory">
-					{subCategory.map((val) => (
-						<div
-							className="subName"
-							style={{
-								backgroundColor: selectedCategory.includes(val.id) && '#2cb7a9',
+		<>
+			<div className="main">
+				<AlertDialog
+					open={error}
+					setOpen={setError}
+					message={
+						'You should select at least one Sub Category to Start the Exams'
+					}
+				/>
+				<div className="Container">
+					<div style={{ alignSelf: 'center' }}>
+						<ArrowCircleLeftOutlinedIcon
+							className="backBtnIcon"
+							onClick={() => {
+								navigate('/home');
 							}}
-							onClick={() => handleSelectCategory(val.id,val.name)}
-							key={val.id}
-						>
-							<p>{val.name}</p>
+						/>
+					</div>
+					<div style={{ margin: 'auto' }}>
+						<h1>{CategoryName}</h1>
+					</div>
+				</div>
+				{subCategory.length > 0 ? (
+					<div className="Container2">
+						<div className="subCategory">
+							{subCategory.map((val) => (
+								<div
+									className="subName"
+									style={{
+										backgroundColor:
+											selectedCategory.includes(val.id) && '#2cb7a9',
+									}}
+									onClick={() => handleSelectCategory(val.id, val.name)}
+									key={val.id}
+								>
+									<p>{val.name}</p>
+								</div>
+							))}
 						</div>
-					))}
+					</div>
+				) : (
+					<LoadingScreen />
+				)}
+				<div className="Container3">
+					<div className="questionCount">
+						<h3>Questions</h3>
+						<input
+							type="number"
+							value={qNumber}
+							onChange={(e) => {
+								setQNumber(e.target.value);
+							}}
+						/>
+					</div>
+					<div className="buttonContainer">
+						<button
+							className="button"
+							onClick={handleSelectAll}
+						>
+							All
+						</button>
+						<button
+							className="button"
+							onClick={() => {
+								setSelectedCategory([]);
+								setQNumber('');
+							}}
+						>
+							Clear
+						</button>
+						<button
+							className="button"
+							onClick={handleStart}
+						>
+							Start
+						</button>
+					</div>
 				</div>
 			</div>
-
-			<div className="Container3">
-				<div className="questionCount">
-					<h3>Questions</h3>
-					<input
-						type="number"
-						value={qNumber}
-						onChange={(e) => {
-							setQNumber(e.target.value);
-						}}
-					/>
-				</div>
-				<div className="buttonContainer">
-					<button
-						className="button"
-						onClick={handleSelectAll}
-					>
-						All
-					</button>
-					<button
-						className="button"
-						onClick={() => {
-							setSelectedCategory([]);
-							setQNumber('');
-						}}
-					>
-						Clear
-					</button>
-					<button
-						className="button"
-						onClick={handleStart}
-					>
-						Start
-					</button>
-				</div>
-			</div>
-		</div>
+		</>
 	);
 }
