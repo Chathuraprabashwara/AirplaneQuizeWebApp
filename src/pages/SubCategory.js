@@ -87,7 +87,8 @@ export default function SubCategory() {
 				)
 				.then((res) => {
 					navigate(`/module/${QuestionsPageId}`, {
-						state: { data: res.data, id: id },
+						state: { data: shuffle(res.data), id: id },
+
 					});
 				});
 		} else {
@@ -178,4 +179,21 @@ export default function SubCategory() {
 			</div>
 		</>
 	);
+}
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
 }

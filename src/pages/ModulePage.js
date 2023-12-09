@@ -91,7 +91,7 @@ function ModulePage() {
 				<div className="header-info">
 					<div>
 					<p className="info-text">Total Questions - {data?.length}</p> 
-					<p className="info-text">Remaining Questions - {data?.length - question}</p>
+					<p className="info-text">Remaining Questions - {questionSet?.length - question}</p>
 					</div>
 					
 					<ReplyIcon
@@ -131,6 +131,7 @@ function ModulePage() {
 				) : (
 					<Questions
 						data={questionSet && questionSet[question]}
+						id={question}
 						answers={answers}
 						setAnswer={setAnswer}
 						isCorrect={isCorrect}

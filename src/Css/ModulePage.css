@@ -151,6 +151,21 @@
 		color: var(--btn-text-color);
 		cursor: pointer;
 	}
+
+	.info-text {
+		color: #ffff;
+		font-weight: bold;
+		font-size:5px;
+	
+	}
+	.header-text {
+		color: #ffff;
+		font-weight: bold;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9); /* Horizontal offset, vertical offset, blur radius, and shadow color */
+		font-size: 6px;
+		margin-top: 10px;
+	}
+	
 }
 
 
