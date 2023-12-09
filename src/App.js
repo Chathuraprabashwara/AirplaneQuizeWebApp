@@ -6,8 +6,8 @@ import SubCategory from './pages/SubCategory';
 
 function App() {
 	return (
-		<div>
-      <Routes>
+		<div class="glass-container">
+		<Routes>
 			<Route
 				path="/"
 				element={<Home />}

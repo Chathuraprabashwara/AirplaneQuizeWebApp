@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import './AlertDialog.css'; // Import the CSS file
 
-export default function AlertDialog({header='Warning',message,open,setOpen,oneBtn=true}) {
+export default function AlertDialog({header='Warning',message,open,setOpen,oneBtn=true , route}) {
 
     const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export default function AlertDialog({header='Warning',message,open,setOpen,oneBt
   };
 
   const handleNavigate = () => {
-    navigate('/home')
+    navigate(route)
     setOpen(false);
 
   }

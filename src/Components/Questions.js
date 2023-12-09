@@ -4,12 +4,12 @@ import Grid from '@mui/material/Grid';
 
 function Questions({
 	data,
+	id,
 	answers,
 	setColor,
 	setSelect,
 	select,
 }) {
-	console.log(data);
 	const handleAnswer = (id, qid) => {
 		setColor(id);
 		console.log(qid);
@@ -48,7 +48,9 @@ function Questions({
 				>
 					<Grid xs="12">
 						<p className="questionText">
-							{data?.id} {data?.question}
+							{/* {data?.id} {data?.question} */}
+							<span>{id+1})&nbsp;</span>
+							{data?.question}
 						</p>
 						<div className="answerContainer">
 							{data?.answers.map((val, idx) => (
@@ -57,8 +59,8 @@ function Questions({
 									className="answerText"
 									style={{
 										backgroundColor:
-											(answers === val.id && 'red') ||
-											(handleColor(val.id, data.id) && '#405de8'),
+											(answers === val.id && 'rgb(12 154 16)') ||
+											(handleColor(val.id, data.id) && '#2cb7a9'),
 									}}
 									onClick={() => handleAnswer(val.id, data.id)}
 								>
