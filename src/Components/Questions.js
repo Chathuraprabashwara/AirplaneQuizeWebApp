@@ -47,10 +47,10 @@ function Questions({
 					sx={{ width: '100%' }}
 				>
 					<Grid xs="12">
-						<p className="questionText">
+						<p className="questionText" style={{ whiteSpace: 'pre-wrap'}}>
 							{/* {data?.id} {data?.question} */}
 							<span>{id+1})&nbsp;</span>
-							{data?.question}
+							{formatQuestions(data?.question)}
 						</p>
 						<div className="answerContainer">
 							{data?.answers.map((val, idx) => (
@@ -86,6 +86,10 @@ function Questions({
 			</div>
 		</>
 	);
+}
+function formatQuestions(text){
+	let finalText = String(text).replaceAll("  ","\n").replace("1)"," \n\t1 -").replace(" 2)"," \n\t2 -").replace(" 3)"," \n\t3 -").replace(" 4)"," \n\t4 -").replace(" 5)"," \n\t5 -");
+	return finalText;
 }
 
 export default Questions;
