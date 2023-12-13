@@ -6,7 +6,7 @@ import SubCategory from './pages/SubCategory';
 
 function App() {
 	return (
-		<div class="glass-container">
+		// <div class="glass-container">
 		<Routes>
 			<Route
 				path="/"
@@ -25,7 +25,7 @@ function App() {
 				element={<SubCategory />}
 			/>
       </Routes>
-		</div>
+		// </div>
 	);
 }
 

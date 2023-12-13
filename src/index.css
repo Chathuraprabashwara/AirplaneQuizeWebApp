@@ -1,22 +1,20 @@
 body {
   margin: 0;
   padding:0;
-  /* background-color: #04214f; */
-  background-image: url("./assest/plane7.png");
+  background-color: #ffff;
+  /* background-image: url("./assest/plane7.png"); */
   font-family: 'Montserrat', sans-serif;
-  background-size: cover;
+  /* background-size: cover; */
   /* background-position: center center; */
 
 
 }
 
-.glass-container {
-  background: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
-  height: 100vh;
+ .glass-container {
+  background: rgba(0, 0, 0, 0.5); 
+  height: 100%;
   backdrop-filter: blur('5px');
-  
-
-}
+} 
 
 
 
