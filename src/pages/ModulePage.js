@@ -33,18 +33,35 @@ function ModulePage() {
 	const [errMessage, setErrMessage] = useState('');
 	const [errBtn, setErrBtn] = useState(false);
 	const [route,setRoute] = useState('');
+	const [checkAnswer, setCheckAnswer] = useState(false)
+	const [nextCount,setNextCount] = useState(0)
 
-	const handleBack = () => {
-		setAnswer(null);
-		setColor(null);
-		setQuestion((prev) => prev - 1);
-	};
+	// const handleBack = () => {
+	// 	setAnswer(null);
+	// 	setColor(null);
+	// 	setQuestion((prev) => prev - 1);
+	// };
 	const handleNext = () => {
+		if(nextCount>0){
+			setQuestion((prev) => prev + 1);
+			setNextCount(0)
+			setColor(null);
+			return
+		}
+		if(!color){
+			setError(true);
+			setErrBtn(true);
+			setErrMessage('Please Select The Answer')
+			return
+		}
 		setAnswer(null);
-		setColor(null);
-		setQuestion((prev) => prev + 1);
+		setNextCount((prev) => prev + 1)
+		setCheckAnswer(true)
+		handleShowAnswer()
+	
 	};
 	const handleShowAnswer = () => {
+		setNextCount(1)
 		questionSet[question].answers.map((val) => {
 			if (val.is_correct_answer) {
 				setAnswer(val.id);
@@ -140,19 +157,21 @@ function ModulePage() {
 						color={color}
 						setSelect={setSelect}
 						select={select}
+						checkAnswer={checkAnswer}
+						setCheckAnswer={setCheckAnswer}
 					/>
 				)}
 			</div>
 			{!showResult && (
 				<div className="button-container">
-					{question > 0 && (
+					{/* {question > 0 && (
 						<button
 							className="BackBtn"
 							onClick={handleBack}
 						>
 							Back
 						</button>
-					)}
+					)} */}
 					{question !== questionSet?.length - 1 && (
 						<button
 							className="nextBtn"
