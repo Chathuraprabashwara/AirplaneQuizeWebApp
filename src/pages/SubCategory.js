@@ -134,6 +134,7 @@ export default function SubCategory() {
 									key={val.id}
 								>
 									<p>{val.name}</p>
+									<p style={{marginLeft:'10px'}}>{val?.nquestions}</p>
 								</div>
 							))}
 						</div>

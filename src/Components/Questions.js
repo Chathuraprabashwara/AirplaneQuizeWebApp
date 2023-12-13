@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Css/Questions.css'; // Import the CSS file
 import Grid from '@mui/material/Grid';
+import { yellow } from '@mui/material/colors';
 
 function Questions({
 	data,
@@ -9,10 +10,15 @@ function Questions({
 	setColor,
 	setSelect,
 	select,
+	setCheckAnswer,
+	checkAnswer
 }) {
+
+	const [selectedAnswer, setSelectedAnswer] = useState('');
 	const handleAnswer = (id, qid) => {
+		setCheckAnswer(false)
+		setSelectedAnswer(id)
 		setColor(id);
-		console.log(qid);
 		const selectVal = {
 			questionId: qid,
 			answer: id,
@@ -60,7 +66,10 @@ function Questions({
 									style={{
 										backgroundColor:
 											(answers === val.id && 'rgb(12 154 16)') ||
-											(handleColor(val.id, data.id) && '#2cb7a9'),
+											((answers !== selectedAnswer && checkAnswer && val.id === selectedAnswer) && 'red') ||
+											(handleColor(val.id, data.id) && '#2cb7a9') 
+											
+											,
 									}}
 									onClick={() => handleAnswer(val.id, data.id)}
 								>
