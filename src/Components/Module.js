@@ -16,7 +16,7 @@ function Module({ name , id }) {
 
 			}}
 		>
-			{name}
+			{name.toUpperCase()}
 		</div>
 	);
 }
