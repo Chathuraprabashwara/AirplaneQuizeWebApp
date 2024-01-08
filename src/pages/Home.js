@@ -34,7 +34,7 @@ function Home({ data }) {
 						item
 						container
 						justifyContent='space-evenly'
-						rowSpacing={4}
+						rowSpacing={2}
 						columnSpacing={{ xs: 1, sm: 2, md: 3 }}
 					>
 						{moduleList.map((ModuleObject, index) => (
